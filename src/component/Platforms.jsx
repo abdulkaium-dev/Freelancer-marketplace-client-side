@@ -10,7 +10,7 @@ const steps = [
 const Platforms = () => {
   return (
      <section className="py-12 px-4 bg-gray-100 my-10 rounded-xl">
-      <h2 className="text-3xl font-semibold mb-8 text-center">How It Works</h2>
+      <h2 className="text-5xl font-semibold mb-8 text-center">How It Works</h2>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {steps.map((step, idx) => (
           <div key={idx} className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">

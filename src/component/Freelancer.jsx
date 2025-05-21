@@ -9,13 +9,13 @@ const platforms = [
   { name: "99designs", color: "text-red-500" },
 ];
 
-export default function FreelancePlatforms() {
+export default function FreelancePlatforms  () {
   return (
-    <div className="min-h-screen bg-purple-100 flex items-center justify-center px-4 py-10">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center ">
       <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-10 max-w-5xl w-full relative">
-        {/* Center character (replace with actual image or SVG) */}
+    
         <div className="flex justify-center mb-10">
-          <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-yellow-400 flex items-center justify-center text-3xl sm:text-4xl shadow-inner">
+          <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-yellow-400 flex items-center justify-center text-4xl sm:text-6xl shadow-inner">
             👨‍💻
           </div>
         </div>

@@ -10,7 +10,7 @@ const FeatureCard = () => {
 const Features = () => {
 
   return (
-    <div className="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-white border border-gray-200 mb-10">
+    <div className="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-white border border-gray-200 my-10">
       <img
         src="/path-to-your-image.png"
         alt="Web development illustration"
@@ -34,7 +34,7 @@ const Features = () => {
 
         <div className="flex items-center justify-between">
          
-          <span className="text-sm text-gray-800 font-semibold">Starting at: <span className="text-blue-600">$69</span></span>
+          <span className="text-sm text-gray-800 font-semibold">Starting at: <span className="text-blue-600">10.48pm</span></span>
         </div>
       </div>
     </div>
