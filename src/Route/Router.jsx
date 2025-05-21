@@ -11,12 +11,13 @@ import Error from "../component/Error";
 
 
 
+
 const router = createBrowserRouter(
     [
         {
             path: "/",
             Component: Root ,
-            errorElement : Error,
+            errorElement : Error ,
              children: [
                 {     
                       path: "/",
