@@ -6,6 +6,7 @@ import AddTask from "../component/Add Task";
 import BrowseTasks from "../component/browseTasks";
 import MyPostedTasks from "../component/MyPostedTasks";
 import Login from "../component/Login";
+import Error from "../component/Error";
 
 
 
@@ -15,6 +16,7 @@ const router = createBrowserRouter(
         {
             path: "/",
             Component: Root ,
+            errorElement : Error,
              children: [
                 {     
                       path: "/",
