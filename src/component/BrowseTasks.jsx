@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BrowseTasks = () => {
+const browseTasks = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const BrowseTasks = () => {
     );
 };
 
-export default BrowseTasks;
+export default browseTasks;
