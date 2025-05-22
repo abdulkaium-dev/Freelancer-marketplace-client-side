@@ -1,8 +1,24 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router";
+import React, { use, useState } from "react";
+import {Link, NavLink, useNavigate } from "react-router";
+import { AuthContext } from "./AuthProvider";
+import { toast } from "react-toastify";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+
+    const { logOutUser, user } = use(AuthContext)
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    logOutUser()
+    navigate('/')
+    toast.success('Logout Success')
+      .then(() => {
+      }).catch((error) => {
+        console.log(error)
+      });
+  }
+
 
   return (
     <nav className="bg-white shadow-md mb-10">
@@ -51,15 +67,22 @@ export default function Navbar() {
         </NavLink>
 
         
-          <NavLink
-          to="/login"
-          className={({ isActive }) =>
-            isActive ? "text-blue-600 font-semibold" : "text-gray-600"
+               {/* Logout Button */}
+          {user && <button
+            onClick={handleLogout}
+            className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+          >
+            Logout
+          </button>}
+          {!user &&
+
+            <Link
+              to="/login"
+              className="bg-indigo-600 text-white px-4 py-1.5 rounded hover:bg-blue-600"
+            >
+               Login/Signup
+            </Link>
           }
-        >
-       Login/Signup
-        </NavLink>
-         
     
         </div>
 
@@ -151,14 +174,22 @@ export default function Navbar() {
         </NavLink>
 
         
-          <NavLink
-          to="/login"
-          className={({ isActive }) =>
-            isActive ? "text-blue-600 font-semibold" : "text-gray-600"
+                  {/* Logout Button */}
+          {user && <button
+            onClick={handleLogout}
+            className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+          >
+            Logout
+          </button>}
+          {!user &&
+
+            <Link
+              to="/login"
+              className="bg-indigo-600 text-white px-4 py-1.5 rounded hover:bg-blue-600"
+            >
+               Login/Signup
+            </Link>
           }
-        >
-       Login/Signup
-        </NavLink>
           </div>
         </div>
       )}

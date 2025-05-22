@@ -15,7 +15,7 @@ export default function FreelancePlatforms  () {
       <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-10 max-w-5xl w-full relative">
     
         <div className="flex justify-center mb-10">
-          <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-yellow-400 flex items-center justify-center text-4xl sm:text-6xl shadow-inner">
+          <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-yellow-400 flex items-center justify-center text-5xl sm:text-6xl shadow-inner">
             👨‍💻
           </div>
         </div>
