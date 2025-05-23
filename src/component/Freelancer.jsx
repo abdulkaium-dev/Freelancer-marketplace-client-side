@@ -1,38 +1,51 @@
-import React from "react";
+import React from 'react';
+import { motion } from "framer-motion";
 
-const platforms = [
-  { name: "Fiverr", color: "text-green-600" },
-  { name: "Upwork", color: "text-green-500" },
-  { name: "Toptal", color: "text-blue-600" },
-  { name: "Freelancer", color: "text-blue-500" },
-  { name: "PeoplePerHour", color: "text-orange-500" },
-  { name: "99designs", color: "text-red-500" },
-];
-
-export default function FreelancePlatforms  () {
+const FreelancePlatforms = () => {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center ">
-      <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-10 max-w-5xl w-full relative">
-    
-        <div className="flex justify-center mb-10">
-          <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-yellow-400 flex items-center justify-center text-5xl sm:text-6xl shadow-inner">
-            👨‍💻
-          </div>
+    <div className="min-h-screen bg-white my-5 ">
+      {/* Navbar */}
+      <header className="flex justify-between items-center p-6 shadow">
+        <div className="text-blue-600 font-bold text-xl">freelancer</div>
+        <nav className="space-x-6 text-gray-700">
+          <a href="#">How it works</a>
+        
+          <button className="bg-blue-600 text-white px-4 py-2 rounded">Post a Project</button>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <div className="flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-20 py-12 bg-gradient-to-r from-white via-white to-blue-100">
+        {/* Text Content */}
+        <div className="w-full md:w-1/2 space-y-6">
+     <motion.h1
+  className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+>
+  How can freelancers<br /> help your business?
+</motion.h1>
+          <p className="text-gray-600 text-lg">
+            The possibilities are endless. Hire expert freelancers who work in every technical, professional, and creative field imaginable.
+          </p>
+          <button className="bg-green-600 text-white px-6 py-3 rounded font-medium">
+            Post a Project
+          </button>
         </div>
 
-        {/* Platforms grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
-          {platforms.map((platform) => (
-            <div
-              key={platform.name}
-              className={`bg-gray-100 rounded-xl p-4 flex items-center justify-center font-semibold text-lg sm:text-xl shadow-md ${platform.color}`}
-            >
-              {platform.name}
-            </div>
-          ))}
+        {/* Hero Image */}
+        <div className="w-full md:w-1/2 mb-10 md:mb-0 flex justify-center">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAtz_Xrw4M7SSvRxJH9RXUS2NXuAvz5jnKSw&s"
+            alt="Person with VR headset"
+            className="max-w-sm md:max-w-md lg:max-w-lg"
+          />
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default FreelancePlatforms;
 

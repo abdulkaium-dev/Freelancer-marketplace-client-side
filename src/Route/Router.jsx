@@ -8,6 +8,8 @@ import MyPostedTasks from "../component/MyPostedTasks";
 import Login  from "../component/Login";
 import Error from "../component/Error";
 import Register from "../component/Register";
+import Details from "../component/Details";
+import Update from "../component/Update";
 
 
 
@@ -23,6 +25,7 @@ const router = createBrowserRouter(
                 {     
                       path: "/",
                     Component: Home,
+                    loader : () => fetch ('http://localhost:3000/datas') ,
                     hydrateFallbackElement: <div className="flex justify-center items-center mt-48 ">
                         <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-green-500"></div>
                     </div>,
@@ -38,6 +41,15 @@ const router = createBrowserRouter(
                      {
                       path: "browse-tasks",
                     Component: BrowseTasks,
+                            loader : () => fetch ('http://localhost:3000/datas') ,
+                    hydrateFallbackElement: <div className="flex justify-center items-center mt-48 ">
+                        <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-green-500"></div>
+                    </div>,
+                },
+                   {
+                    path : "details/:_id",
+                    loader : () => fetch ('http://localhost:3000/datas') ,
+                    Component : Details,
                     hydrateFallbackElement: <div className="flex justify-center items-center mt-48 ">
                         <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-green-500"></div>
                     </div>,
@@ -45,6 +57,13 @@ const router = createBrowserRouter(
                    {
                       path: "my-posted-tasks",
                     Component : MyPostedTasks,
+                    hydrateFallbackElement: <div className="flex justify-center items-center mt-48 ">
+                        <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-green-500"></div>
+                    </div>,
+                },
+                     {
+                      path: "update",
+                    Component :Update,
                     hydrateFallbackElement: <div className="flex justify-center items-center mt-48 ">
                         <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-green-500"></div>
                     </div>,
