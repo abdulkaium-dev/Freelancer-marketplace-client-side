@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import { toast } from "react-toastify";
 import ThemeToggle from "./ThemeToggle";
+import { useTypewriter, Cursor } from "react-simple-typewriter";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,13 +22,23 @@ export default function Navbar() {
       });
   };
 
+  // Use the typewriter hook for the brand text
+  const [text] = useTypewriter({
+    words: ["Freelance Task Marketplace"],
+    loop: 0, // infinite loop, or set a number
+    delaySpeed: 2000,
+    typeSpeed: 70,
+    deleteSpeed: 50,
+  });
+
   return (
     <nav className="bg-gradient-to-br from-green-50 to-blue-100 shadow-md mb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
-          {/* Logo or Brand */}
-          <div className="flex-shrink-0 text-2xl font-bold text-indigo-600">
-            Freelance Task Marketplace
+          {/* Logo or Brand with Typewriter */}
+          <div className="flex-shrink-0 text-2xl font-bold text-indigo-600 whitespace-nowrap">
+            {text}
+            <Cursor cursorStyle="|" />
           </div>
 
           {/* Desktop Menu */}
@@ -185,6 +196,8 @@ export default function Navbar() {
             >
               My Posted Tasks
             </NavLink>
+
+               <ThemeToggle />
 
             {/* Mobile Logout / Login */}
             {user ? (
