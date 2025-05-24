@@ -12,7 +12,7 @@ const Update = () => {
     const formData = new FormData(form);
     const updateData = Object.fromEntries(formData.entries());
 
-    await fetch(`http://localhost:3000/datas/${_id}`, {
+    await fetch(`https://marketplace-server-opal.vercel.app/datas/${_id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

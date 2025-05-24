@@ -21,7 +21,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         Component: Home,
-        loader: () => fetch("http://localhost:3000/datas"),
+        loader: () => fetch("https://marketplace-server-opal.vercel.app/datas"),
         hydrateFallbackElement: (
           <div className="flex justify-center items-center mt-48 ">
             <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-green-500"></div>
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       {
         path: "browse-tasks",
         Component: BrowseTasks,
-        loader: () => fetch("http://localhost:3000/datas"),
+        loader: () => fetch("https://marketplace-server-opal.vercel.app/datas"),
         hydrateFallbackElement: (
           <div className="flex justify-center items-center mt-48 ">
             <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-green-500"></div>
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
         element:<Privateroute> 
           <TaskDetails></TaskDetails>
           </Privateroute>,
-        loader: ({params}) => fetch(`http://localhost:3000/datas/${params.id}`),
+        loader: ({params}) => fetch(`https://marketplace-server-opal.vercel.app/datas/${params.id}`),
         hydrateFallbackElement: (
           <div className="flex justify-center items-center mt-48 ">
             <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-green-500"></div>
@@ -66,7 +66,7 @@ const router = createBrowserRouter([
           element: <Privateroute>
             <MyPostedTasks></MyPostedTasks>
           </Privateroute>,
-        loader: () => fetch("http://localhost:3000/datas"),
+        loader: () => fetch("https://marketplace-server-opal.vercel.app/datas"),
         hydrateFallbackElement: (
           <div className="flex justify-center items-center mt-48 ">
             <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-green-500"></div>
@@ -76,7 +76,7 @@ const router = createBrowserRouter([
       {
         path: "update/:id",
         Component: Update,
-        loader: ({params}) => fetch(`http://localhost:3000/datas/${params.id}`),
+        loader: ({params}) => fetch(`https://marketplace-server-opal.vercel.app/datas/${params.id}`),
         hydrateFallbackElement: (
           <div className="flex justify-center items-center mt-48 ">
             <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-green-500"></div>

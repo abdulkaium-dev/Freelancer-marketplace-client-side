@@ -9,7 +9,7 @@ const AddTask = () => {
     const newData = Object.fromEntries(formData.entries());
     console.log(newData);
 
-    fetch('http://localhost:3000/datas', {
+    fetch('https://marketplace-server-opal.vercel.app/datas', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
