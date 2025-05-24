@@ -1,20 +1,45 @@
 import React from 'react';
-import { useParams } from 'react-router';
+import { useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Update = () => {
-     const { id } = useParams();
+  const { _id, taskTitle, description, deadline, budget } = useLoaderData();
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+    const updateData = Object.fromEntries(formData.entries());
+
+    await fetch(`http://localhost:3000/datas/${_id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updateData),
+    });
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Task Updated Successfully!',
+      text: 'Your task has been updated.',
+      confirmButtonText: 'OK',
+    });
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="w-full max-w-2xl bg-white rounded-2xl shadow-lg p-8">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Update Task</h2>
-        <form className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <form onSubmit={handleUpdate} className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div className="col-span-1 md:col-span-2">
             <label htmlFor="taskTitle" className="block text-sm font-medium text-gray-700">Task Title</label>
             <input
               type="text"
               id="taskTitle"
               name="taskTitle"
-              placeholder="Task Title"
+              defaultValue={taskTitle}
               className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
@@ -25,7 +50,7 @@ const Update = () => {
               id="description"
               name="description"
               rows="4"
-              placeholder="Write a short description..."
+              defaultValue={description}
               className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
             ></textarea>
           </div>
@@ -36,7 +61,7 @@ const Update = () => {
               type="number"
               id="budget"
               name="budget"
-              placeholder="e.g., 500"
+              defaultValue={budget}
               className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
@@ -47,6 +72,7 @@ const Update = () => {
               type="date"
               id="date"
               name="date"
+              defaultValue={deadline}
               className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
           </div>

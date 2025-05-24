@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router'; // ✅ Correct import
 import Swal from 'sweetalert2';
 
 const MyPostedTasks = () => {
   const datas = useLoaderData();
-  const [allTasks, setAllTasks] = React.useState(datas); // ✅ use the state
+  const [allTasks, setAllTasks] = React.useState(datas);
 
   const handleDelete = (_id) => {
     Swal.fire({
@@ -19,6 +19,9 @@ const MyPostedTasks = () => {
       if (result.isConfirmed) {
         fetch(`http://localhost:3000/datas/${_id}`, {
           method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
         })
           .then(res => res.json())
           .then(data => {
@@ -62,5 +65,3 @@ const MyPostedTasks = () => {
 };
 
 export default MyPostedTasks;
-
-

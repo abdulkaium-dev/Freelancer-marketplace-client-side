@@ -3,7 +3,7 @@ import { Link, useLoaderData } from 'react-router';
 import { motion } from 'framer-motion';  // Import motion
 
 export const DataCard = ({ data }) => {
-  const { taskTitle, category, description, deadline, budget, email, userName, photo } = data;
+  const {_id, taskTitle, category, description, deadline, budget, email, userName, photo } = data;
 
   return (
     <motion.div
@@ -46,7 +46,7 @@ const BrowseTasks = () => {
       <h2 className="text-4xl font-bold mb-4 text-center ">All cards is here.....</h2>
 
       <div className="grid grid-cols-1  bg-yellow-50 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {datas.slice(0, 6).map((data) => (
+        {datas.map((data) => (
           <DataCard key={data._id} data={data} />
         ))}
       </div>

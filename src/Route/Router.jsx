@@ -9,6 +9,7 @@ import Error from "../component/Error";
 import Register from "../component/Register";
 import Details from "../component/Details";
 import Update from "../component/Update";
+import TaskDetails from "../component/Details";
 
 const router = createBrowserRouter([
   {
@@ -46,8 +47,8 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "details/:_id",
-        Component: Details,
+        path: "details/:id",
+        Component: TaskDetails,
         loader: () => fetch("http://localhost:3000/datas"),
         hydrateFallbackElement: (
           <div className="flex justify-center items-center mt-48 ">
@@ -68,6 +69,7 @@ const router = createBrowserRouter([
       {
         path: "update/:id",
         Component: Update,
+        loader: ({params}) => fetch(`http://localhost:3000/datas/${params.id}`),
         hydrateFallbackElement: (
           <div className="flex justify-center items-center mt-48 ">
             <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-green-500"></div>
