@@ -32,7 +32,7 @@ export default function Navbar() {
   });
 
   return (
-    <nav className="bg-gradient-to-br from-green-50 to-blue-100 shadow-md mb-10">
+    <nav className="bg-gradient-to-br from-green-50 to-blue-200 shadow-md mb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo or Brand with Typewriter */}
