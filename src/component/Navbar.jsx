@@ -1,5 +1,5 @@
-import React, { use, useState } from "react";
-import {Link, NavLink, useNavigate } from "react-router";
+import React, { useState, useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import { toast } from "react-toastify";
 import ThemeToggle from "./ThemeToggle";
@@ -7,87 +7,97 @@ import ThemeToggle from "./ThemeToggle";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-    const { logOutUser, user } = use(AuthContext)
-  const navigate = useNavigate()
+  const { logOutUser, user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     logOutUser()
-    navigate('/')
-    toast.success('Logout Success')
       .then(() => {
-      }).catch((error) => {
-        console.log(error)
+        toast.success("Logout Success");
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
       });
-  }
-
+  };
 
   return (
-    <nav className=" bg-gradient-to-br from-green-50 to-blue-100 shadow-md mb-10">
+    <nav className="bg-gradient-to-br from-green-50 to-blue-100 shadow-md mb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between  h-16 items-center">
+        <div className="flex justify-between h-16 items-center">
           {/* Logo or Brand */}
           <div className="flex-shrink-0 text-2xl font-bold text-indigo-600">
-          Freelance Task Marketplace
+            Freelance Task Marketplace
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex gap-6 ">
-                <NavLink
-          to="/"
-          className={({ isActive }) =>
-            isActive ? "text-blue-600 font-semibold" : "text-gray-600"
-          }
-        >
-          Home
-        </NavLink>
-
-         <NavLink
-          to="/add-task"
-          className={({ isActive }) =>
-            isActive ? "text-blue-600 font-semibold" : "text-gray-600"
-          }
-        >
-           Add Task
-        </NavLink>
-            
-         <NavLink
-          to="/browse-tasks"
-          className={({ isActive }) =>
-            isActive ? "text-blue-600 font-semibold" : "text-gray-600"
-          }
-        >
-            Browse Tasks
-        </NavLink>
-          <NavLink
-          to="/my-posted-tasks"
-          className={({ isActive }) =>
-            isActive ? "text-blue-600 font-semibold" : "text-gray-600"
-          }
-        >
-         My Posted Tasks
-        </NavLink>
-
-        <ThemeToggle></ThemeToggle>
-
-        
-               {/* Logout Button */}
-          {user && <button
-            onClick={handleLogout}
-            className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-          >
-            Logout
-          </button>}
-          {!user &&
-
-            <Link
-              to="/login"
-              className="bg-indigo-600 text-white px-4 py-1.5 rounded hover:bg-blue-600"
+          <div className="hidden md:flex gap-6 items-center">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "text-blue-600 font-semibold" : "text-gray-600"
+              }
             >
-               Login/Signup
-            </Link>
-          }
-    
-        </div>
+              Home
+            </NavLink>
+
+            <NavLink
+              to="/add-task"
+              className={({ isActive }) =>
+                isActive ? "text-blue-600 font-semibold" : "text-gray-600"
+              }
+            >
+              Add Task
+            </NavLink>
+
+            <NavLink
+              to="/browse-tasks"
+              className={({ isActive }) =>
+                isActive ? "text-blue-600 font-semibold" : "text-gray-600"
+              }
+            >
+              Browse Tasks
+            </NavLink>
+            <NavLink
+              to="/my-posted-tasks"
+              className={({ isActive }) =>
+                isActive ? "text-blue-600 font-semibold" : "text-gray-600"
+              }
+            >
+              My Posted Tasks
+            </NavLink>
+
+            <ThemeToggle />
+
+            {/* If user is logged in, show avatar with tooltip and Logout button */}
+            {user ? (
+              <>
+                <div
+                  title={user.displayName || "User"}
+                  className="w-10 h-10 rounded-full overflow-hidden cursor-pointer border-2 border-indigo-600"
+                >
+                  <img
+                    src={user.photoURL || "/default-avatar.png"}
+                    alt="User Avatar"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <button
+                  onClick={handleLogout}
+                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link
+                to="/login"
+                className="bg-indigo-600 text-white px-4 py-1.5 rounded hover:bg-blue-600"
+              >
+                Login/Signup
+              </Link>
+            )}
+          </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -141,64 +151,76 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden" id="mobile-menu">
           <div className="flex flex-col px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                 <NavLink
-          to="/"
-          className={({ isActive }) =>
-            isActive ? "text-blue-600 font-semibold" : "text-gray-600"
-          }
-        >
-          Home
-        </NavLink>
-
-         <NavLink
-          to="/add-task"
-          className={({ isActive }) =>
-            isActive ? "text-blue-600 font-semibold" : "text-gray-600"
-          }
-        >
-           Add Task
-        </NavLink>
-            
-         <NavLink
-          to="/browse-tasks"
-          className={({ isActive }) =>
-            isActive ? "text-blue-600 font-semibold" : "text-gray-600"
-          }
-        >
-            Browse Tasks
-        </NavLink>
-          <NavLink
-          to="/my-posted-tasks"
-          className={({ isActive }) =>
-            isActive ? "text-blue-600 font-semibold" : "text-gray-600"
-          }
-        >
-         My Posted Tasks
-        </NavLink>
-
-        
-                  {/* Logout Button */}
-          {user && <button
-            onClick={handleLogout}
-            className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-          >
-            Logout
-          </button>}
-          {!user &&
-
-            <Link
-              to="/login"
-              className="bg-indigo-600 text-white px-4 py-1.5 rounded hover:bg-blue-600"
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "text-blue-600 font-semibold" : "text-gray-600"
+              }
             >
-               Login/Signup
-            </Link>
-          }
+              Home
+            </NavLink>
+
+            <NavLink
+              to="/add-task"
+              className={({ isActive }) =>
+                isActive ? "text-blue-600 font-semibold" : "text-gray-600"
+              }
+            >
+              Add Task
+            </NavLink>
+
+            <NavLink
+              to="/browse-tasks"
+              className={({ isActive }) =>
+                isActive ? "text-blue-600 font-semibold" : "text-gray-600"
+              }
+            >
+              Browse Tasks
+            </NavLink>
+            <NavLink
+              to="/my-posted-tasks"
+              className={({ isActive }) =>
+                isActive ? "text-blue-600 font-semibold" : "text-gray-600"
+              }
+            >
+              My Posted Tasks
+            </NavLink>
+
+            {/* Mobile Logout / Login */}
+            {user ? (
+              <>
+                <div
+                  title={user.displayName || "User"}
+                  className="w-10 h-10 rounded-full overflow-hidden cursor-pointer border-2 border-indigo-600 mb-2"
+                >
+                  <img
+                    src={user.photoURL || "/default-avatar.png"}
+                    alt="User Avatar"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <button
+                  onClick={handleLogout}
+                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link
+                to="/login"
+                className="bg-indigo-600 text-white px-4 py-1.5 rounded hover:bg-blue-600"
+              >
+                Login/Signup
+              </Link>
+            )}
           </div>
         </div>
       )}
     </nav>
   );
 }
+
 
 
 
