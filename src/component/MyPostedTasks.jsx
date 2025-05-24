@@ -57,12 +57,12 @@ const MyPostedTasks = () => {
 
   return (
     <div>
-      <h3 className="text-lg font-semibold mb-4">
+      <h3 className="text-lg font-semibold mb-4 lg:px-10 px-5">
         You bid for {bidsCount} {bidsCount === 1 ? "opportunity" : "opportunities"}.
       </h3>
 
       {allTasks.map(task => (
-        <div key={task._id} className="p-4 rounded-2xl shadow-md bg-white max-w-md mx-auto my-4">
+        <div key={task._id} className="p-4 rounded-2xl shadow-md bg-black text-white max-w-md mx-auto my-4">
           <h2 className="text-xl font-bold mb-2">{task.title}</h2>
           <p><strong>Description:</strong> {task.description}</p>
           <p><strong>Budget:</strong> ${task.budget}</p>

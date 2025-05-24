@@ -2,6 +2,7 @@ import React, { use, useState } from "react";
 import {Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "./AuthProvider";
 import { toast } from "react-toastify";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +22,7 @@ export default function Navbar() {
 
 
   return (
-    <nav className="bg-gray-100  shadow-md mb-10">
+    <nav className=" bg-gradient-to-br from-green-50 to-blue-100 shadow-md mb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between  h-16 items-center">
           {/* Logo or Brand */}
@@ -65,6 +66,8 @@ export default function Navbar() {
         >
          My Posted Tasks
         </NavLink>
+
+        <ThemeToggle></ThemeToggle>
 
         
                {/* Logout Button */}
