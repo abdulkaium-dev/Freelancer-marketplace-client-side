@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       {
         path: "details/:id",
         Component: TaskDetails,
-        loader: () => fetch("http://localhost:3000/datas"),
+        loader: ({params}) => fetch(`http://localhost:3000/datas/${params.id}`),
         hydrateFallbackElement: (
           <div className="flex justify-center items-center mt-48 ">
             <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-green-500"></div>
