@@ -92,6 +92,7 @@ const router = createBrowserRouter([
           </div>
         ),
       },
+    
       {
         path: "register",
         Component: Register,
