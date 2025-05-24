@@ -199,16 +199,6 @@ export default function Navbar() {
 
 
 
-        //  <NavLink
-        //   to="/"
-        //   className={({ isActive }) =>
-        //     isActive ? "text-blue-600 font-semibold" : "text-gray-600"
-        //   }
-        // >
-        //   Home
-        // </NavLink>
-
-
 
 
 

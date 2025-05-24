@@ -10,6 +10,7 @@ import Register from "../component/Register";
 import Details from "../component/Details";
 import Update from "../component/Update";
 import TaskDetails from "../component/Details";
+import Privateroute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,11 @@ const router = createBrowserRouter([
       },
       {
         path: "add-task",
-        Component: AddTask,
+        element: 
+          
+             <AddTask></AddTask> 
+          
+           ,
         hydrateFallbackElement: (
           <div className="flex justify-center items-center mt-48 ">
             <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-green-500"></div>
@@ -58,7 +63,11 @@ const router = createBrowserRouter([
       },
       {
         path: "my-posted-tasks",
-        Component: MyPostedTasks,
+          element: 
+          
+            <MyPostedTasks></MyPostedTasks>
+      
+           ,
         loader: () => fetch("http://localhost:3000/datas"),
         hydrateFallbackElement: (
           <div className="flex justify-center items-center mt-48 ">
