@@ -1,32 +1,38 @@
 import React from 'react';
 import { useLoaderData } from 'react-router';
-import { motion } from 'framer-motion';  // Import motion
+import { motion } from 'framer-motion';
 
 export const DataCard = ({ data }) => {
   const { taskTitle, category, description, deadline, budget, email, userName, photo } = data;
 
   return (
     <motion.div
-      className="max-w-sm rounded-2xl shadow-lg bg-white overflow-hidden p-4"
+      className="max-w-sm rounded-2xl shadow-lg bg-[#F9FAFB] overflow-hidden p-4" // border removed
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
       whileHover={{ scale: 1.05 }}
     >
-      <img className="w-full h-48 object-cover rounded-xl mb-4" src={photo} alt={taskTitle} />
-      <h2 className="text-xl font-bold mb-2">{taskTitle}</h2>
-      <p className="text-sm text-gray-500 mb-1">
-        Category: <span className="text-gray-700">{category}</span>
+      <img
+        className="w-full h-48 object-cover rounded-xl mb-4"
+        src={photo}
+        alt={taskTitle}
+      />
+      <h2 className="text-xl font-bold mb-2" style={{ color: "#111827" }}>
+        {taskTitle}
+      </h2>
+      <p className="text-sm mb-1">
+        Category: <span style={{ color: "#111827" }}>{category}</span>
       </p>
-      <p className="text-sm text-gray-500 mb-1">
-        Budget: <span className="text-green-600 font-semibold">${budget}</span>
+      <p className="text-sm mb-1">
+        Budget: <span style={{ color: "#10B981", fontWeight: "600" }}>${budget}</span>
       </p>
-      <p className="text-sm text-gray-500 mb-1">
-        Deadline: <span className="text-red-500">{deadline}</span>
+      <p className="text-sm mb-1">
+        Deadline: <span style={{ color: "#EF4444" }}>{deadline}</span>
       </p>
-      <p className="text-sm text-gray-700 mb-2">{description}</p>
-      <p className="text-xs text-gray-600">
-        Posted by: <span className="font-semibold">{userName}</span> ({email})
+      <p className="text-sm" style={{ color: "#111827" }}>{description}</p>
+      <p className="text-xs mt-2" style={{ color: "#9CA3AF" }}>
+        Posted by: <span style={{ fontWeight: "600", color: "#111827" }}>{userName}</span> ({email})
       </p>
     </motion.div>
   );
@@ -34,13 +40,14 @@ export const DataCard = ({ data }) => {
 
 const Features = () => {
   const datas = useLoaderData();
-  console.log(datas);
 
   return (
-    <div className="lg:mx-10 my-10">
-      <h2 className="text-4xl font-bold mb-4 text-center ">Features card</h2>
+    <div className="lg:mx-10 my-10 bg-[#F9FAFB] p-6 rounded-xl">
+      <h2 className="text-4xl font-bold mb-8 text-center" style={{ color: "#111827" }}>
+        Features Card
+      </h2>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 bg-gradient-to-r from-blue-50 via-blue-50 to-blue-100">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {datas.slice(0, 6).map((data) => (
           <DataCard key={data._id} data={data} />
         ))}
@@ -50,9 +57,3 @@ const Features = () => {
 };
 
 export default Features;
-
-
-// https://marketplace-server-opal.vercel.app/
-
-
-

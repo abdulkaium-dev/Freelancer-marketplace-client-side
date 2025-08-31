@@ -6,7 +6,7 @@ const TaskDetails = () => {
   const { taskTitle, category, description, deadline, budget, photo } = task;
 
   return (
-    <div className="max-w-5xl mx-auto p-6 my-12 bg-white shadow-2xl rounded-2xl transition-all duration-300 hover:shadow-3xl">
+    <div className="max-w-5xl mx-auto p-6 my-12 bg-[#F9FAFB] shadow-2xl rounded-2xl transition-all duration-300 hover:shadow-3xl">
       
       {/* Enhanced Photo Section */}
       <div className="relative overflow-hidden rounded-2xl mb-6 group shadow-lg">
@@ -21,28 +21,28 @@ const TaskDetails = () => {
       </div>
 
       {/* Task Title */}
-      <h2 className="text-4xl font-extrabold text-gray-800 mb-4">{taskTitle}</h2>
+      <h2 className="text-4xl font-extrabold text-[#111827] mb-4">{taskTitle}</h2>
 
       {/* Task Info Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
         <div className="text-lg">
-          <span className="block font-semibold text-gray-600">Category</span>
-          <span className="text-blue-600 font-medium">{category}</span>
+          <span className="block font-semibold text-[#9CA3AF]">Category</span>
+          <span className="text-[#111827] font-medium">{category}</span>
         </div>
         <div className="text-lg">
-          <span className="block font-semibold text-gray-600">Budget</span>
-          <span className="text-green-600 font-bold">${budget}</span>
+          <span className="block font-semibold text-[#9CA3AF]">Budget</span>
+          <span className="text-[#10B981] font-bold">${budget}</span>
         </div>
         <div className="text-lg">
-          <span className="block font-semibold text-gray-600">Deadline</span>
+          <span className="block font-semibold text-[#9CA3AF]">Deadline</span>
           <span className="text-red-500">{deadline}</span>
         </div>
       </div>
 
       {/* Description */}
       <div>
-        <h3 className="text-xl font-semibold text-gray-700 mb-2">Description</h3>
-        <p className="text-base text-gray-700 leading-relaxed">
+        <h3 className="text-xl font-semibold text-[#111827] mb-2">Description</h3>
+        <p className="text-base text-[#111827] leading-relaxed">
           {description}
         </p>
       </div>
@@ -51,7 +51,3 @@ const TaskDetails = () => {
 };
 
 export default TaskDetails;
-
-
-
-

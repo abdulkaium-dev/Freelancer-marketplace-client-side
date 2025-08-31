@@ -1,26 +1,34 @@
 import React from 'react';
-
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
 const Error = () => {
     return (
-        <div>
-            <div className=' space-y-8'>
-                <Navbar></Navbar>
+        <div className="min-h-screen bg-[#F9FAFB] flex flex-col">
+            <Navbar />
 
-             <img className='mx-auto' src="data:image/jpeg;base64,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" alt="" />
+            <div className="flex flex-col items-center justify-center flex-1 space-y-8 py-20 px-4">
+                {/* 404 Image */}
+                <img
+                    className="w-80 h-80 object-contain mx-auto"
+                    src="https://cdn-icons-png.flaticon.com/512/564/564619.png"
+                    alt="404 Not Found"
+                />
 
-                <div className='text-center'>
-                <h1 className='text-4xl font-semibold text-red-400'> 404 - Page Not Found </h1>
-                <h1 className='pb-7 pt-2'> Oops! The page you are looking for doesn't exist. </h1>
-                <Link to="/"><button className='btn bg-[#0EA106] text-white px-3 '>Go Back Home</button></Link>
+                {/* 404 Text & Button */}
+                <div className="text-center space-y-2">
+                    <h1 className="text-4xl font-semibold text-[#111827]">404 - Page Not Found</h1>
+                    <p className="text-[#9CA3AF]">Oops! The page you are looking for doesn't exist.</p>
+                    <Link to="/">
+                        <button className="mt-4 px-6 py-3 bg-[#10B981] text-white rounded-lg font-semibold hover:bg-green-600 transition">
+                            Go Back Home
+                        </button>
+                    </Link>
                 </div>
-             <Footer></Footer>
             </div>
 
-            
+            <Footer />
         </div>
     );
 };

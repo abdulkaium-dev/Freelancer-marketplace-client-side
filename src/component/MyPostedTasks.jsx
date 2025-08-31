@@ -19,16 +19,14 @@ const MyPostedTasks = () => {
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
+      confirmButtonColor: "#10B981",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(`https://marketplace-server-opal.vercel.app/datas/${_id}`, {
           method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Content-Type': 'application/json' },
         })
           .then(res => res.json())
           .then(data => {
@@ -39,10 +37,7 @@ const MyPostedTasks = () => {
               Swal.fire("Error!", "Failed to delete the task.", "error");
             }
           })
-          .catch(err => {
-            console.error(err);
-            Swal.fire("Error!", "Failed to delete the task.", "error");
-          });
+          .catch(() => Swal.fire("Error!", "Failed to delete the task.", "error"));
       }
     });
   };
@@ -56,40 +51,47 @@ const MyPostedTasks = () => {
   };
 
   return (
-    <div>
-      <h3 className="text-lg font-semibold mb-4 lg:px-10 px-5">
+    <div className="bg-[#F9FAFB] min-h-screen py-4 px-4 my-10">
+      <h3 className="text-xl font-semibold mb-8 text-center text-[#111827]">
         You bid for {bidsCount} {bidsCount === 1 ? "opportunity" : "opportunities"}.
       </h3>
 
-      {allTasks.map(task => (
-        <div key={task._id} className="p-4 rounded-2xl shadow-md bg-black text-white max-w-md mx-auto my-4">
-          <h2 className="text-xl font-bold mb-2">{task.title}</h2>
-          <p><strong>Description:</strong> {task.description}</p>
-          <p><strong>Budget:</strong> ${task.budget}</p>
-          <p><strong>Due Date:</strong> {task.dueDate}</p>
-          <p><strong>Bids:</strong> {task.bids}</p>
-          <div className="flex gap-2 mt-4">
-            <Link to={`/update/${task._id}`}>
-              <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Update</button>
-            </Link>
-            <button
-              onClick={() => handleDelete(task._id)}
-              className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-            >
-              Delete
-            </button>
-            <button
-              onClick={() => handleBid(task._id)}
-              className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-            >
-              Place Bid
-            </button>
+      <div className="flex flex-col items-center gap-6">
+        {allTasks.map(task => (
+          <div
+            key={task._id}
+            className="w-full max-w-lg p-6 rounded-2xl shadow-lg bg-white border border-[#E5E7EB]"
+          >
+            <h2 className="text-2xl font-bold mb-2 text-[#111827]">{task.title}</h2>
+            <p className="text-[#9CA3AF] mb-1"><strong>Description:</strong> {task.description}</p>
+            <p className="text-[#9CA3AF] mb-1"><strong>Budget:</strong> <span className="text-[#10B981]">${task.budget}</span></p>
+            <p className="text-[#9CA3AF] mb-1"><strong>Due Date:</strong> <span className="text-red-500">{task.dueDate}</span></p>
+            <p className="text-[#9CA3AF] mb-4"><strong>Bids:</strong> <span className="font-semibold text-[#111827]">{task.bids}</span></p>
+
+            <div className="flex flex-wrap gap-3">
+              <Link to={`/update/${task._id}`}>
+                <button className="px-4 py-2 bg-[#10B981] text-white rounded-lg hover:bg-green-600 transition-colors">
+                  Update
+                </button>
+              </Link>
+              <button
+                onClick={() => handleDelete(task._id)}
+                className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+              >
+                Delete
+              </button>
+              <button
+                onClick={() => handleBid(task._id)}
+                className="px-4 py-2 bg-[#10B981] text-white rounded-lg hover:bg-green-600 transition-colors"
+              >
+                Place Bid
+              </button>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
 
 export default MyPostedTasks;
-
