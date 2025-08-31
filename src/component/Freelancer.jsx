@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 
 const FreelancePlatforms = () => {
   return (
-    <div className="min-h-screen bg-[#F9FAFB] my-5">
+    <div className="min-h-screen bg-[#F9FAFB] my-6">
       {/* Navbar */}
-      <header className="flex justify-between items-center p-6 shadow-md bg-white">
+      <header className="flex justify-between items-center p-20 shadow-md bg-white">
         <div className="text-[#10B981] font-bold text-xl">freelancer</div>
         <nav className="space-x-6 text-[#111827]">
           <a href="#" className="hover:text-[#10B981] transition-colors">How it works</a>
@@ -16,7 +16,7 @@ const FreelancePlatforms = () => {
       </header>
 
       {/* Hero Section */}
-      <div className="flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-20 py-12 bg-[#F9FAFB]">
+      <div className="flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-20 py-10 bg-[#F9FAFB]">
         {/* Text Content */}
         <div className="w-full md:w-1/2 space-y-6">
           <motion.h1
